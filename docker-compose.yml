@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+
+  partners-service:
+    container_name: partners-service
+    build: .
+    ports:
+      - 8080:8080
+    depends_on:
+      - database
+
+  database:
+    container_name: database
+    image: postgres:11.4
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: partners-db
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
