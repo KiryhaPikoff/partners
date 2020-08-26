@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      # Tables creation (partner, store).
+      file: db/changelog/db.changelog-1.0.yaml
