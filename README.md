@@ -1,1 +1,24 @@
-# partners
+# Partners-service:
+
+Hello!
+
+To start my app (on Linux) you just need to run one command:
+
+<code>
+mvn install -DskipTests && docker-compose build && docker-compose up
+</code>
+
+
+\
+For token generating I used https://jwt.io/ \
+1) Set RS256 algorithm.
+2) Copy/paste public and private key from application.properties (Important! Remove all "\\" from keys!).
+3) Set "sub" : "role" in payload.
+
+Also you can use my demo tokens:\
+<b>Role - administrator: </b> \
+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbmlzdHJhdG9yIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.OXMNSUXgaiZB122j3utpljeDzIHiAitoHxztIBgPOxUGogAZwkCoZE2gVwEgHN49TxbMrFIfCxOIJwWMVcEK1R_m5C_mGf3H7ClXdY7-wh1AHNznJQetjPdhVKf1Tj_nOl815EU0HUJTjfMbj0Vg-l1CjosgMe2iYaylOWOCjpk7873_uLwhi2YTGHcRjAmH2Jq7Ry5iUrU5aMrL4-nL_mNTus6JsJANqvwRRpuSnsKE7lPgBX3RR2Dm8Ei1SggT7KjV7mudqiHDDBr1G_CfVzC2eYvFIprkJjt0yVajbx2ksQspZMB22JPRXOzvR6PTtDI-60oRvJejDseeC9Xe2_VqnvC3Ss6ZtZ-KC9Mr6I4KThOKlOYNxK82wA1NcHQPARah-U-qBktTr7rJJDRpR72WTydPjvyIyS8r4uLJUtrPrBLuVqYEYRR9Ygq5hb9L3WqiqdjmP5labw2MbO5Rsd6O9fkVm4hgNjqEzHMhoQTf9E3-icqRq8CWVPjFxmITeWQptX7RbWW9hm4kgFtGlzZq0sEU3H6X9rJn9P1c-46G6miT1EvXCgNk1a_ezCBYbvbgXUk98HPY2hc7APFbs81ehVyRwK3ExIt8Ui2i9SkdTnz6JpDBj4G44kpTqTsBTulPn8_qsEAMbIAFvxw6o4cCGUtwUkYXDjdOEu1Kj7E
+\
+\
+<b>Role - user: </b> \
+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.BSLk6TZA0gbc5ta5-_o1o-XJeUfmQBzDePuD2PPKfvS2TFhvJYuq884e4ZK2hnXs1ADbQ9J9xHchR9oL3n1vNhsi2Qdc82xre-M6nnA75xHFezqUUAucD0HiatvEKLh_kjcAi746F2TjsYH5nm-Bt8DcPONNb4pEmygaeZS6jkbItEgVgM75w2Um0hwud70uJro8_ns35IL7kGsMrUMstLsHPgTHtueGueHhJM2sOtXwx6SUYw5tMwEfPR0W9RKZ5xRnTJi1cUGwEjW5j0I_jDolVh1mSAk8s2_MXBb6luuXEC3q7XSykDYggUrOoYOPQwhEhiYmfo6OjDEtL-FuqStuK3vsMGqyqVQn1VfxhL2idk46ySbfRz2x4nRjij9HPVj5D_WmIG9PCVPUq02Mtg5kCYIo9_YDvUFNDIhHuXaiBZ0HuR64a5jw8W1vzfZ2MgvLFe0Pb4K6iqoEgjXw318u9JzdnnnC5pkrnwlCvzvvRZLBMHm0YZHG-CYO0gZ2rcpoaU1vhVd70kvInXHgT7FtRkzO3-HQ7F6AmDHig94lB0LiXchBQxhuOojPMwQFZesIMl2VQl8ERIu3LFH4LSHiIGKpN0jVSQWa-G8FsgbzqKOADw7YsM31RY08cl1G_wgGYwUXBODitcH6AO4YjzEYkebFRKyyoNHhoJoT5Tg
