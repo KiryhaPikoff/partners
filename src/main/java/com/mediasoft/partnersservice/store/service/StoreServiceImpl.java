@@ -28,6 +28,14 @@ public class StoreServiceImpl implements StoreService {
                     "Store with name=" + store.getName() + " already exists."
             );
         }
+
+        var partnerId = store.getPartner().getId();
+        if (!partnerRepository.existsById(partnerId)) {
+            throw new ResourceNotFoundException(
+                    "Partner with id=" + partnerId + " not exists."
+            );
+        }
+
         storeRepository.save(store);
     }
 

@@ -1,5 +1,6 @@
 package com.mediasoft.partnersservice.store.mapper;
 
+import com.mediasoft.partnersservice.partner.model.Partner;
 import com.mediasoft.partnersservice.store.dto.StoreDto;
 import com.mediasoft.partnersservice.store.model.Store;
 import org.springframework.stereotype.Component;
@@ -18,6 +19,7 @@ public class StoreMapperImpl implements StoreMapper {
                         .description(store.getDescription())
                         .address(store.getAddress())
                         .employeesNumber(store.getEmployeesNumber())
+                        .partnerId(store.getPartner().getId())
                         .build();
     }
 
@@ -30,6 +32,9 @@ public class StoreMapperImpl implements StoreMapper {
                         .description(storeDto.getDescription())
                         .address(storeDto.getAddress())
                         .employeesNumber(storeDto.getEmployeesNumber())
+                        .partner(Partner.builder()
+                                    .id(storeDto.getPartnerId())
+                                    .build())
                         .build();
     }
 }

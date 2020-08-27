@@ -6,8 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
 
 @Getter
 @Builder
@@ -26,6 +26,12 @@ public class StoreDto {
     @NotNull
     private final String address;
 
-    @Positive
+    @Min(0)
+    @NotNull
     private final Integer employeesNumber;
+
+    @Min(0)
+    @NotNull
+    @JsonProperty("partner_id")
+    private final Long partnerId;
 }
