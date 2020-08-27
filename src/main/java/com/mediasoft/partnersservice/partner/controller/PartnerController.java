@@ -7,20 +7,21 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/partner")
+@RequestMapping("${mapping.partner_controller}")
 @AllArgsConstructor(onConstructor = @__({@Autowired}))
 public class PartnerController {
 
     private final PartnerService partnerService;
 
     @PostMapping
+    @PreAuthorize("@authDecider.canCreate(authentication)")
     public ResponseEntity create(@RequestBody @Valid PartnerDto partnerDto) {
         partnerService.create(partnerDto);
         return new ResponseEntity<>(HttpStatus.CREATED);
@@ -33,7 +34,8 @@ public class PartnerController {
     }
 
     @GetMapping("/{partner_id}")
-    public ResponseEntity<PartnerDto> update(@PathVariable("partner_id") Long partnerId) {
+    public ResponseEntity<PartnerDto> getPartnerById(
+            @PathVariable("partner_id") Long partnerId) {
         var partner = partnerService.getById(partnerId);
         if (partner.isEmpty()) {
             throw new ResourceNotFoundException(

@@ -6,19 +6,21 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/store")
+@RequestMapping("${mapping.store_controller}")
 @AllArgsConstructor(onConstructor = @__({@Autowired}))
 public class StoreController {
 
     private final StoreService storeService;
 
     @PostMapping
+    @PreAuthorize("@authDecider.canCreate(authentication)")
     public ResponseEntity create(@RequestBody @Valid StoreDto storeDto) {
         storeService.create(storeDto);
         return new ResponseEntity<>(HttpStatus.CREATED);
@@ -32,8 +34,8 @@ public class StoreController {
     }
 
     @GetMapping("/{partner_id}/{store_id}")
-    public ResponseEntity<StoreDto> update(@PathVariable("partner_id") Long partnerId,
-                                           @PathVariable("store_id")   Long storeId) {
+    public ResponseEntity<StoreDto> getStoreByPartnerId(@PathVariable("partner_id") Long partnerId,
+                                                        @PathVariable("store_id")   Long storeId) {
         var store = storeService.getStoreByPartnerId(partnerId, storeId);
         return new ResponseEntity<>(store, HttpStatus.OK);
     }
