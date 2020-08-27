@@ -2,6 +2,7 @@ package com.mediasoft.partnersservice.partner.model;
 
 import com.mediasoft.partnersservice.store.model.Store;
 import lombok.*;
+import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 import java.util.List;
@@ -26,4 +27,7 @@ public class Partner {
 
     @OneToMany(mappedBy = "partner")
     private List<Store> stores;
+
+    @Formula("(SELECT COUNT(*) FROM Store s WHERE s.partner_id = id)")
+    private Integer storesCount;
 }

@@ -2,10 +2,11 @@ package com.mediasoft.partnersservice.partner.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import javax.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Builder

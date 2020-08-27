@@ -6,6 +6,7 @@ import com.mediasoft.partnersservice.partner.repository.PartnerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,6 +35,7 @@ public class PartnerServiceImpl implements PartnerService {
     }
 
     @Override
+    @Transactional
     public Optional<PartnerDto> getById(Long id) {
         var partner = partnerRepository.getOne(id);
         return Optional.ofNullable(partnerMapper.toDto(partner));
