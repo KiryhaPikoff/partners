@@ -10,7 +10,14 @@ mvn install -DskipTests && docker-compose build && docker-compose up
 
 
 \
-For token generating I used https://jwt.io/ \
+I add some tests for my app. You can run it by command:
+
+<code>
+mvn test
+</code>
+
+\
+For token generating I used https://jwt.io/ 
 1) Set RS256 algorithm.
 2) Copy/paste public and private key from application.properties (Important! Remove all "\\" from keys!).
 3) Set "sub" : "role" in payload.
