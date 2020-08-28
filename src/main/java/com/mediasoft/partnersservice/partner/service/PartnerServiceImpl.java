@@ -4,6 +4,7 @@ import com.mediasoft.partnersservice.partner.dto.PartnerDto;
 import com.mediasoft.partnersservice.partner.mapper.PartnerMapper;
 import com.mediasoft.partnersservice.partner.repository.PartnerRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -11,12 +12,18 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
 public class PartnerServiceImpl implements PartnerService {
 
     private final PartnerRepository partnerRepository;
 
     private final PartnerMapper partnerMapper;
+
+    @Autowired
+    public PartnerServiceImpl(PartnerRepository partnerRepository,
+                              PartnerMapper partnerMapper) {
+        this.partnerRepository = partnerRepository;
+        this.partnerMapper = partnerMapper;
+    }
 
     @Override
     public void create(PartnerDto partnerDto) {

@@ -14,10 +14,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("${mapping.store_controller}")
-@AllArgsConstructor(onConstructor = @__({@Autowired}))
 public class StoreController {
 
     private final StoreService storeService;
+
+    @Autowired
+    public StoreController(StoreService storeService) {
+        this.storeService = storeService;
+    }
 
     @PostMapping
     @PreAuthorize("@authDecider.canCreate(authentication)")

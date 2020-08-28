@@ -15,10 +15,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("${mapping.partner_controller}")
-@AllArgsConstructor(onConstructor = @__({@Autowired}))
 public class PartnerController {
 
     private final PartnerService partnerService;
+
+    @Autowired
+    public PartnerController(PartnerService partnerService) {
+        this.partnerService = partnerService;
+    }
 
     @PostMapping
     @PreAuthorize("@authDecider.canCreate(authentication)")

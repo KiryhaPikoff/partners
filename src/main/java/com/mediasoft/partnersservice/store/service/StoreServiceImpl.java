@@ -6,12 +6,12 @@ import com.mediasoft.partnersservice.store.dto.StoreDto;
 import com.mediasoft.partnersservice.store.mapper.StoreMapper;
 import com.mediasoft.partnersservice.store.repository.StoreRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
 public class StoreServiceImpl implements StoreService {
 
     private final StoreRepository storeRepository;
@@ -19,6 +19,15 @@ public class StoreServiceImpl implements StoreService {
     private final StoreMapper storeMapper;
 
     private final PartnerRepository partnerRepository;
+
+    @Autowired
+    public StoreServiceImpl(StoreRepository storeRepository,
+                            StoreMapper storeMapper,
+                            PartnerRepository partnerRepository) {
+        this.storeRepository = storeRepository;
+        this.storeMapper = storeMapper;
+        this.partnerRepository = partnerRepository;
+    }
 
     @Override
     public void create(StoreDto storeDto) {
