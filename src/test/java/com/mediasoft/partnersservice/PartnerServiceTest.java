@@ -1,9 +1,10 @@
-package com.mediasoft.partnersservice.partner.service;
+package com.mediasoft.partnersservice;
 
 import com.mediasoft.partnersservice.partner.dto.PartnerDto;
 import com.mediasoft.partnersservice.partner.mapper.PartnerMapperImpl;
 import com.mediasoft.partnersservice.partner.model.Partner;
 import com.mediasoft.partnersservice.partner.repository.PartnerRepository;
+import com.mediasoft.partnersservice.partner.service.PartnerServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
